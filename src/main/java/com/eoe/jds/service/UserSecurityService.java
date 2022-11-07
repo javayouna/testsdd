@@ -12,6 +12,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -22,6 +23,7 @@ public class UserSecurityService implements UserDetailsService {
 
     private final UserRepository userRepository;
 
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Optional<SiteUser> _siteUser = this.userRepository.findByusername(username);
@@ -31,9 +33,9 @@ public class UserSecurityService implements UserDetailsService {
         SiteUser siteUser = _siteUser.get();
         List<GrantedAuthority> authorities = new ArrayList<>();
         if ("admin".equals(username)) {
-            authorities.add(new SimpleGrantedAuthority(UserRole.ADMIN.getValue()));
+            authorities.add(new SimpleGrantedAuthority(UserRole.ROLE_ADMIN.getValue()));
         } else {
-            authorities.add(new SimpleGrantedAuthority(UserRole.USER.getValue()));
+            authorities.add(new SimpleGrantedAuthority(UserRole.ROLE_USER.getValue()));
         }
         return new User(siteUser.getUsername(), siteUser.getPassword(), authorities);
     }

@@ -40,4 +40,11 @@ public class UserService {
         }
 
     }
+
+    /*public void modify(SiteUser siteUser) {
+        siteUser.setModifyDate(LocalDateTime.now());
+        this.userRepository.save(siteUser);
+    }*/
+
+
 }

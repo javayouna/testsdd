@@ -16,4 +16,6 @@ public class QuestionDTO {
     private String subject;
     private String content;
     private LocalDateTime createDate;
+    private LocalDateTime modifyDate;
+
 }

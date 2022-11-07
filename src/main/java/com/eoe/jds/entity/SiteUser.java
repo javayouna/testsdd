@@ -25,5 +25,4 @@ public class SiteUser {
 
     private LocalDateTime createDate;
 
-
-}
+    }

@@ -20,7 +20,9 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.authorizeRequests().antMatchers("/**").permitAll()
+        http.authorizeRequests()
+                .antMatchers("/admin/**").hasRole("ADMIN")
+                .antMatchers("/**").permitAll()
                 //=>로그인 하지 않아도 모든 페이지에 접근 가능
                 .and() //=> http 객체 설정 이어서 (and)
                 .formLogin()

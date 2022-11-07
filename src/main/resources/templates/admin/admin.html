@@ -1,0 +1,28 @@
+<html layout:decorate="~{layout}" xmlns:layout="http://www.w3.org/1999/xhtml">
+<div layout:fragment="content" class="container my-3">
+    <table class="table">
+        <thead class="table-dark">
+        <tr>
+            <th>번호</th>
+            <th>아이디</th>
+            <th>이메일</th>
+            <th>가입날짜</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!--타임리프는 Model 객체에 저장된 값을 읽을 수 있으므로 템플릿에서 questionList를 사용할 수 있다-->
+        <tr th:each="UserList, loop : ${siteUserList}">
+            <!--위의 코드는 엘리먼트를 questionList의 개수만큼 반복하여 출력하는 역할을 한다.
+            리고 questionList에 저장된 데이터를 하나씩 꺼내 question 객체에 대입하여 반복구간 내에서 사용할수 있게 한다.
+            자바의 for each문과 비슷하다.-->
+            <td th:text="${loop.count}"></td>
+            <td th:text="${UserList.username}"></td>
+            <td th:text="${UserList.email}"></td>
+            <td th:text="${#temporals.format(UserList.createDate, 'yyyy-MM-dd HH:mm')}"></td>
+            <!--위의 코드는 게시물 번호 공식을 적용해 게시물 번호가 역순으로 출력되도록 함-->
+
+        </tr>
+        </tbody>
+    </table>
+</div>
+</html>
