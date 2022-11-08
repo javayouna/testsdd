@@ -17,5 +17,5 @@ public class UserDTO {
     private String password;
     private String email;
     private LocalDateTime createDate;
-    private LocalDateTime modifyDate;
+
 }
