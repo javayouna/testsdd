@@ -32,7 +32,6 @@ public class QuestionService {
     private Specification<Question> search(String kw) {
         return new Specification<>() {
             private static final long serialVersionUID = 1L;
-
             @Override
             public Predicate toPredicate(Root<Question> q, CriteriaQuery<?> query, CriteriaBuilder cb) {
                 query.distinct(true);  // 중복을 제거
@@ -72,7 +71,6 @@ public class QuestionService {
             }
         }
     }
-
     //제목과 내용을 입력하여 질문 데이터를 저장하는 create 메서드
     public void create(String subject, String content, SiteUser user) {
         Question q = Question.builder()
